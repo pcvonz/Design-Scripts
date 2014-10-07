@@ -1,3 +1,7 @@
+### This script takes in .svg file as input.
+### Notes: Make sure that all objects occupy the same space. Make sure there are NO layers.
+
+
 text = input("what is your file name?")
 f = open(text, "r+")
 beginning = '''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
