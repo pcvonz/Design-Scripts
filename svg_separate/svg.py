@@ -54,14 +54,16 @@ for char in range(len(string_test)):
                     print("writing_file..")
                     write_string = False
                     if filename != "new_svg.svg":
+                        print(string)
+                        print(len(string))
                         w.write(beginning + "\n\n" + string + "</g>" + "\n" + "</svg>")
                     else:
                         w.write(string + "</g>" + "\n" + "</svg>")
                     filename = str(x) + ".svg"
                     x += 1
-                    w = open(filename, "w+")
                     string = ""
     if write_string == True:
+        w = open(filename, "w+")
         string += string_test[char]
 
 w.close()
