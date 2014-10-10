@@ -24,7 +24,7 @@ beginning = '''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 count = 0
 white_space = 0
 new_string = ""
-filename = "new_svg"
+filename = "new_svg.svg"
 name = 0
 string = ""
 string_test = ""
@@ -41,24 +41,28 @@ for char in range(len(string_test)):
     if string_test[char] == "<":
         if string_test[char+1] == "g":
             g_count += 1
-            print("\n\n\n\nWINNER")
+            print("found 1 <g>")
             write_string = True
     if string_test[char] == "<":
-        print("OH NO")
+        print("Could this be a </g>?")
         if string_test[char+1] == "/":
+            print("oh maybe maybe..")
             if string_test[char+2] == "g":
+                print("Yup it is")
                 g_count += -1
                 if g_count == 0:
                     print("writing_file..")
                     write_string = False
-                    w.write(beginning + "\n\n" + string + "</g>" + "\n" + "</svg>")
+                    if filename != "new_svg.svg":
+                        w.write(beginning + "\n\n" + string + "</g>" + "\n" + "</svg>")
+                    else:
+                        w.write(string + "</g>" + "\n" + "</svg>")
                     filename = str(x) + ".svg"
                     x += 1
                     w = open(filename, "w+")
                     string = ""
     if write_string == True:
         string += string_test[char]
-print(string_test)
 
 w.close()
 f.close()
