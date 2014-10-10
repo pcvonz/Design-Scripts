@@ -29,6 +29,7 @@ name = 0
 string = ""
 string_test = ""
 x = 0
+import os
 g_count = 0
 write_string = True
 
@@ -68,3 +69,4 @@ for char in range(len(string_test)):
 
 w.close()
 f.close()
+os.remove(filename)
